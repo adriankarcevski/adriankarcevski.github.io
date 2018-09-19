@@ -1,1 +1,0 @@
-# adriankarcevski.github.io
