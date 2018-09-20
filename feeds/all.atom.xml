@@ -1,10 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Adrian Karcevski</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2018-09-19T01:24:00-04:00</updated><entry><title>Async web scraping with Python</title><link href="/my-super-post.html" rel="alternate"></link><published>2018-09-19T01:24:00-04:00</published><updated>2018-09-19T01:24:00-04:00</updated><author><name>Adrian Karcevski</name></author><id>tag:None,2018-09-19:/my-super-post.html</id><summary type="html">&lt;p class="first last"&gt;How to do ___ in Python.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Adrian Karcevski</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2018-09-19T01:25:00-04:00</updated><entry><title>Async web scraping with Python</title><link href="/my-super-post.html" rel="alternate"></link><published>2018-09-19T01:24:00-04:00</published><updated>2018-09-19T01:24:00-04:00</updated><author><name>Adrian Karcevski</name></author><id>tag:None,2018-09-19:/my-super-post.html</id><summary type="html">&lt;p class="first last"&gt;How to do ___ in Python.&lt;/p&gt;
 </summary><content type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Pelican is a static site generator.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-</content><category term="python"></category><category term="awesome"></category></entry><entry><title>Creating watch dog scripts in Bash</title><link href="/secure.html" rel="alternate"></link><published>2018-09-19T01:24:00-04:00</published><updated>2018-09-19T01:24:00-04:00</updated><author><name>Adrian Karcevski</name></author><id>tag:None,2018-09-19:/secure.html</id><summary type="html">&lt;p class="first last"&gt;How to do ___ in Bash.&lt;/p&gt;
+</content><category term="python"></category><category term="awesome"></category></entry><entry><title>Setting up a Git Repository</title><link href="/repo.html" rel="alternate"></link><published>2018-09-19T01:24:00-04:00</published><updated>2018-09-19T01:25:00-04:00</updated><author><name>Adrian Karcevski</name></author><id>tag:None,2018-09-19:/repo.html</id><summary type="html">&lt;p class="first last"&gt;How to do ___ in Bash.&lt;/p&gt;
+</summary><content type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git --version
+&lt;span class="c1"&gt;# git version 2.7.4&lt;/span&gt;
+
+$ git config --list
+$ git config --help
+
+&lt;span class="c1"&gt;# on local-repo&lt;/span&gt;
+$ git init
+&lt;span class="c1"&gt;# to start tracking&lt;/span&gt;
+
+&lt;span class="c1"&gt;# on remote-repo&lt;/span&gt;
+git clone
+
+&lt;span class="c1"&gt;# remove .git to stop tracking&lt;/span&gt;
+$ rm .git
+
+$ git status
+
+$ touch .gitignore
+&lt;span class="c1"&gt;# add files to be ignored&lt;/span&gt;
+
+$ git add -A
+&lt;span class="c1"&gt;# add all files sub .gitignore&lt;/span&gt;
+$ get add .gitignore
+
+$ get reset
+&lt;span class="c1"&gt;# remove everything from the staging area&lt;/span&gt;
+
+$ git clone &amp;lt;source&amp;gt; &amp;lt;destination&amp;gt;
+$ get clone ../remote_repo.git .
+$ get clone https://github.com/adriankarcevski/remote_repo.git .
+
+&lt;span class="c1"&gt;# Follow these steps after creating changes.&lt;/span&gt;
+
+&lt;span class="c1"&gt;# check the changes made&lt;/span&gt;
+$ get diff
+
+&lt;span class="c1"&gt;# stage the changes for commit&lt;/span&gt;
+$ git status
+$ git add -A
+
+&lt;span class="c1"&gt;# commit changes&lt;/span&gt;
+$ git commit -m &lt;span class="s2"&gt;&amp;quot;Modified multiply function&amp;quot;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# then; if working with others&lt;/span&gt;
+$ git pull origin master
+$ git push origin master
+&lt;/pre&gt;&lt;/div&gt;
+</content><category term="linux"></category></entry><entry><title>Creating watch dog scripts in Bash</title><link href="/secure.html" rel="alternate"></link><published>2018-09-19T01:24:00-04:00</published><updated>2018-09-19T01:24:00-04:00</updated><author><name>Adrian Karcevski</name></author><id>tag:None,2018-09-19:/secure.html</id><summary type="html">&lt;p class="first last"&gt;How to do ___ in Bash.&lt;/p&gt;
 </summary><content type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;hello world!&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-</content><category term="linux"></category></entry><entry><title>Hosting a static site using Pelican and Git</title><link href="/hosting-a-static-site-using-pelican-and-git.html" rel="alternate"></link><published>2018-09-19T00:58:00-04:00</published><updated>2018-09-19T00:58:00-04:00</updated><author><name>Adrian Karcevski</name></author><id>tag:None,2018-09-19:/hosting-a-static-site-using-pelican-and-git.html</id><summary type="html">&lt;p&gt;How to setup a Pelican website using Github Pages.&lt;/p&gt;</summary><content type="html">&lt;p&gt;How to setup a Pelican website using Github Pages.&lt;/p&gt;</content><category term="python"></category><category term="pelican"></category><category term="github"></category><category term="git"></category></entry><entry><title>Setting up a Git Repository</title><link href="/setting-up-a-git-repository.html" rel="alternate"></link><published>2018-09-19T00:58:00-04:00</published><updated>2018-09-19T00:58:00-04:00</updated><author><name>Adrian Karcevski</name></author><id>tag:None,2018-09-19:/setting-up-a-git-repository.html</id><summary type="html">&lt;p&gt;I'll be writing about front-end and back-end web development, cryptocurrency mining/trading/cryptography, data analytics and network security monitoring.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="logo" src="/images/cpu.jpg" width=250 /&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;I'll be writing about front-end and back-end web development, cryptocurrency mining/trading/cryptography, data analytics and network security monitoring.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="logo" src="/images/cpu.jpg" width=250 /&gt;&lt;/p&gt;</content><category term="github"></category><category term="git"></category></entry></feed>
+</content><category term="linux"></category></entry><entry><title>Hosting a static site using Pelican and Git</title><link href="/hosting-a-static-site-using-pelican-and-git.html" rel="alternate"></link><published>2018-09-19T00:58:00-04:00</published><updated>2018-09-19T00:58:00-04:00</updated><author><name>Adrian Karcevski</name></author><id>tag:None,2018-09-19:/hosting-a-static-site-using-pelican-and-git.html</id><summary type="html">&lt;p&gt;How to setup a Pelican website using Github Pages.&lt;/p&gt;</summary><content type="html">&lt;p&gt;How to setup a Pelican website using Github Pages.&lt;/p&gt;</content><category term="python"></category><category term="pelican"></category><category term="github"></category><category term="git"></category></entry></feed>
