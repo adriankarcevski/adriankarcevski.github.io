@@ -63,7 +63,7 @@ MEDIUS_CATEGORIES = {
 MEDIUS_AUTHORS = {
     'Adrian Karcevski': {
         'description':"""
-            I'm the creator of this circus show
+            I read a lot about technical topics related to IT.
         """,
         'cover': '/images/profile.png',
         'image': '/images/ninja.png',

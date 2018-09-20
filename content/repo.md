@@ -6,3 +6,4 @@ authors: Adrian Karcevski
 
 I'll be writing about front-end and back-end web development, cryptocurrency mining/trading/cryptography, data analytics and network security monitoring.
 
+<img alt="logo" src="/images/cpu.jpg" width=250 />

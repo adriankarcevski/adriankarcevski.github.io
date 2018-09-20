@@ -1,4 +1,4 @@
-title: Pelican + Github = Website
+title: Hosting a static site using Pelican and Git
 date: 2018-09-19 00:58
 category: Projects
 tags: python, pelican, github, git
