@@ -1,2 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Adrian Karcevski - Projects</title><link href="/" rel="alternate"></link><link href="/feeds/projects.atom.xml" rel="self"></link><id>/</id><updated>2018-09-19T00:58:00-04:00</updated><entry><title>Hosting a static site using Pelican and Git</title><link href="/hosting-a-static-site-using-pelican-and-git.html" rel="alternate"></link><published>2018-09-19T00:58:00-04:00</published><updated>2018-09-19T00:58:00-04:00</updated><author><name>Adrian Karcevski</name></author><id>tag:None,2018-09-19:/hosting-a-static-site-using-pelican-and-git.html</id><summary type="html">&lt;p&gt;How to setup a Pelican website using Github Pages.&lt;/p&gt;</summary><content type="html">&lt;p&gt;How to setup a Pelican website using Github Pages.&lt;/p&gt;</content><category term="python"></category><category term="pelican"></category><category term="github"></category><category term="git"></category></entry></feed>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Adrian Karcevski - Projects</title><link href="/" rel="alternate"></link><link href="/feeds/projects.atom.xml" rel="self"></link><id>/</id><updated>2018-09-19T00:58:00-04:00</updated><entry><title>Hosting a static site using Pelican and Git</title><link href="/hosting-a-static-site-using-pelican-and-git.html" rel="alternate"></link><published>2018-09-19T00:58:00-04:00</published><updated>2018-09-19T00:58:00-04:00</updated><author><name>Adrian Karcevski</name></author><id>tag:None,2018-09-19:/hosting-a-static-site-using-pelican-and-git.html</id><summary type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git rm -rf --cached .
+$ git add .
+$ git commit -a -m &lt;span class="s1"&gt;&amp;#39;description&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; git push --all
+&lt;/pre&gt;&lt;/div&gt;
+</summary><content type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git rm -rf --cached .
+$ git add .
+$ git commit -a -m &lt;span class="s1"&gt;&amp;#39;description&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; git push --all
+&lt;/pre&gt;&lt;/div&gt;
+</content><category term="python"></category><category term="pelican"></category><category term="github"></category><category term="git"></category></entry></feed>
