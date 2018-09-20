@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Adrian Karcevski - Linux</title><link href="/" rel="alternate"></link><link href="/feeds/linux.atom.xml" rel="self"></link><id>/</id><updated>2018-09-19T01:24:00-04:00</updated><entry><title>Bash scripts</title><link href="/secure.html" rel="alternate"></link><published>2018-09-19T01:24:00-04:00</published><updated>2018-09-19T01:24:00-04:00</updated><author><name>Adrian Karcevski</name></author><id>tag:None,2018-09-19:/secure.html</id><summary type="html">&lt;p class="first last"&gt;How to do ___ in Bash.&lt;/p&gt;
+</summary><content type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;hello world!&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+</content><category term="linux"></category></entry></feed>
