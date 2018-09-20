@@ -1,6 +1,6 @@
 title: Sample
 date: 2018-09-19 01:35
-category: main
+category: Python
 tags: code, python
 authors: Adrian Karcevski
 
@@ -8,4 +8,5 @@ authors: Adrian Karcevski
 
 I'm writing some code below.
 
-![Here is the picture]({filename}/images/logo.png)
+<!-- ![Here is the picture]({filename}/images/logo.png) -->
+<img alt="logo" src="/images/cpu.jpg" width=250 />

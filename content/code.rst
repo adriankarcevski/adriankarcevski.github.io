@@ -4,7 +4,7 @@
 :date: 2018-09-19 01:24
 :modified: 2018-09-19 01:24
 :tags: python, awesome
-:category: python
+:category: Python
 :slug: my-super-post
 :authors: Adrian Karcevski
 :summary: How to do ___ in Python.
