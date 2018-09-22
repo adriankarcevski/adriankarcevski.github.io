@@ -71,22 +71,22 @@
 <div class="highlight"><pre><span></span>$ git clone https://github.com/&lt;your_name&gt;/&lt;your_name&gt;.github.io.git
 </pre></div>
 <p>Change to the new directory.</p>
-<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> &lt;your_name&gt;.github.io
+<div class="highlight"><pre><span></span>$ cd &lt;your_name&gt;.github.io
 </pre></div>
 <p>As mentioned above we will need a place to store our &quot;source&quot; files i.e. configuration files, Makefile, virtual environment, and content folder. We will do this by creating a new branch.</p>
-<div class="highlight"><pre><span></span>$ git checkout -b <span class="nb">source</span>
+<div class="highlight"><pre><span></span>$ git checkout -b source
 </pre></div>
 <p>Now create the virtual environment and activate it. If you're using Python3, Pelican requires version 3.3 or above.</p>
-<div class="highlight"><pre><span></span>$ virtualenv --python<span class="o">=</span>python3.6 venv
-$ <span class="nb">source</span> venv/bin/activate
+<div class="highlight"><pre><span></span>$ virtualenv --python=python3.6 venv
+$ source venv/bin/activate
 </pre></div>
 <p>Inside the virtual environment, install Pelican and the required dependencies.</p>
-<div class="highlight"><pre><span></span><span class="o">(</span>venv<span class="o">)</span>$ pip install pelican markdown ghp-import
+<div class="highlight"><pre><span></span>(venv)$ pip install pelican markdown ghp-import
 </pre></div>
 <p>Afterwards, we can create our &quot;source&quot; files using pelican-quickstart</p>
-<div class="highlight"><pre><span></span><span class="o">(</span>venv<span class="o">)</span>$ pelican-quickstart
+<div class="highlight"><pre><span></span>(venv)$ pelican-quickstart
 </pre></div>
-<p>You will be prompted a series of questions in order to setup the pelican.conf file.</p>
+<p>You will be prompted a series of questions in order to setup the pelicanconf.py file.</p>
 <div class="highlight"><pre><span></span>&gt; Where do you want to create your new web site? [.] ./
 &gt; What will be the title of this web site? Adrian Karcevski
 &gt; Who will be the author of this web site? Adrian Karcevski
@@ -112,9 +112,9 @@ content     Makefile  pelicanconf.py  __pycache__  venv
 fabfile.py  output    publishconf.py  README.md
 </pre></div>
 <p>Now, in the content folder, create a sample content file in Markdown (.md) format.</p>
-<div class="highlight"><pre><span></span><span class="o">(</span>venv<span class="o">)</span>$ touch sample.md
+<div class="highlight"><pre><span></span>(venv)$ touch sample.md
 </pre></div>
-<p>In your text editor:</p>
+<p>Open the file you just created in your text editor and add the following:</p>
 <div class="highlight"><pre><span></span>Title: Hosting a static site using Pelican and Git
 Date: 2018-09-22 16:38
 Category: Projects
@@ -125,7 +125,7 @@ Authors: Adrian Karcevski
 GasdknjbnGajksnbkjlFSfjkn
 </pre></div>
 <p>Alternatively you can use the reStructuredText (.rst) format.</p>
-<div class="highlight"><pre><span></span><span class="o">(</span>venv<span class="o">)</span>$ touch sample.rst
+<div class="highlight"><pre><span></span>(venv)$ touch sample.rst
 </pre></div>
 <div class="highlight"><pre><span></span>Hosting a static site using Pelican and Git
 #####################################################
@@ -137,21 +137,20 @@ GasdknjbnGajksnbkjlFSfjkn
 GasdknjbnGajksnbkjlFSfjkn
 </pre></div>
 <p>To see what it looks like we need to make the .html files and serve them.</p>
-<div class="highlight"><pre><span></span><span class="o">(</span>venv<span class="o">)</span>$ make html <span class="o">&amp;&amp;</span> serve html
+<div class="highlight"><pre><span></span>(venv)$ make html &amp;&amp; serve html
 </pre></div>
 <p>Open your browser and go to localhost:8000 to see what it looks like. You should now see your webpage.</p>
-<p>In order to save space, I'm not going to go into adding images, rss feeds, etc.</p>
 <p>Finally lets make some last changes with git before we commit and push the code to our remote repository.</p>
 <p>By creating a .gitignore file git will ignore the output folder when pushing to the source branch. Then we will reload the staging area to ensure .gitignore works properly. If you setup a .gitignore when you made the repository, you can omit the reload.</p>
-<div class="highlight"><pre><span></span><span class="o">(</span>venv<span class="o">)</span>$ <span class="nb">echo</span> output &gt; .gitignore
-<span class="o">(</span>venv<span class="o">)</span>$ git rm -rf --cached .
-<span class="o">(</span>venv<span class="o">)</span>$ git add .
+<div class="highlight"><pre><span></span>(venv)$ echo output &gt; .gitignore
+(venv)$ git rm -rf --cached .
+(venv)$ git add .
 </pre></div>
-<p>Now we can commit the changes and push them to our remote repositories source branch.</p>
-<div class="highlight"><pre><span></span><span class="o">(</span>venv<span class="o">)</span>$ git commit -a -m <span class="s1">&#39;intial commit&#39;</span> <span class="o">&amp;&amp;</span> git push origin <span class="nb">source</span>
+<p>Now we can commit the changes and push them to our remote repositorie's source branch.</p>
+<div class="highlight"><pre><span></span>(venv)$ git commit -a -m &#39;intial commit&#39; &amp;&amp; git push origin source
 </pre></div>
-<p>Github Pages requires a ghpages branch which is where our files will be served from. The following command will accomplish this step.</p>
-<div class="highlight"><pre><span></span><span class="o">(</span>venv<span class="o">)</span>$ make github
+<p>Github Pages requires a gh-pages branch which is where our files will be served from. The following command will use ghp-import to accomplish this step.</p>
+<div class="highlight"><pre><span></span>(venv)$ make github
 </pre></div>
 <p>Congratulations, you've just created a webpage on Github Pages. You should see your content when you visit &lt;your_name&gt;.github.io</p>
 
