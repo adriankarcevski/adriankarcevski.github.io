@@ -17,19 +17,19 @@ First create the repository where our project will live.
 
 Next clone the repository to create a new directory.
 
-.. code-block:: bash
+.. code-block:: text
 
    $ git clone https://github.com/<your_name>/<your_name>.github.io.git
 
 Change to the new directory.
 
-.. code-block:: bash
+.. code-block:: text
 
    $ cd <your_name>.github.io
 
 As mentioned above we will need a place to store our "source" files i.e. configuration files, Makefile, virtual environment, and content folder. We will do this by creating a new branch.
 
-.. code-block:: bash 
+.. code-block:: text 
 
    $ git checkout -b source
 
@@ -37,24 +37,24 @@ As mentioned above we will need a place to store our "source" files i.e. configu
 
 Now create the virtual environment and activate it. If you're using Python3, Pelican requires version 3.3 or above.
 
-.. code-block:: bash
+.. code-block:: text
 
    $ virtualenv --python=python3.6 venv
    $ source venv/bin/activate
 
 Inside the virtual environment, install Pelican and the required dependencies.
 
-.. code-block:: bash
+.. code-block:: text
 
    (venv)$ pip install pelican markdown ghp-import
 
 Afterwards, we can create our "source" files using pelican-quickstart
 
-.. code-block:: bash
+.. code-block:: text
 
    (venv)$ pelican-quickstart
 
-You will be prompted a series of questions in order to setup the pelican.conf file.
+You will be prompted a series of questions in order to setup the pelicanconf.py file.
 
 .. code-block:: text
 
@@ -87,11 +87,11 @@ Once you've completed the prompt, run ls command and make sure you see the follo
 
 Now, in the content folder, create a sample content file in Markdown (.md) format.
 
-.. code-block:: bash 
+.. code-block:: text 
 
     (venv)$ touch sample.md
 
-In your text editor:
+Open the file you just created in your text editor and add the following:
 
 .. code-block:: text 
 
@@ -107,7 +107,7 @@ In your text editor:
 
 Alternatively you can use the reStructuredText (.rst) format.
 
-.. code-block:: bash 
+.. code-block:: text 
 
     (venv)$ touch sample.rst
 
@@ -124,33 +124,31 @@ Alternatively you can use the reStructuredText (.rst) format.
 
 To see what it looks like we need to make the .html files and serve them. 
 
-.. code-block:: bash 
+.. code-block:: text 
 
     (venv)$ make html && serve html
 
 Open your browser and go to localhost:8000 to see what it looks like. You should now see your webpage.
 
-In order to save space, I'm not going to go into adding images, rss feeds, etc.
-
 Finally lets make some last changes with git before we commit and push the code to our remote repository.
 
 By creating a .gitignore file git will ignore the output folder when pushing to the source branch. Then we will reload the staging area to ensure .gitignore works properly. If you setup a .gitignore when you made the repository, you can omit the reload.
 
-.. code-block:: bash
+.. code-block:: text
 
     (venv)$ echo output > .gitignore
     (venv)$ git rm -rf --cached .
     (venv)$ git add .
 
-Now we can commit the changes and push them to our remote repositories source branch.
+Now we can commit the changes and push them to our remote repositorie's source branch.
 
-.. code-block:: bash
+.. code-block:: text
     
     (venv)$ git commit -a -m 'intial commit' && git push origin source
 
-Github Pages requires a ghpages branch which is where our files will be served from. The following command will accomplish this step.
+Github Pages requires a gh-pages branch which is where our files will be served from. The following command will use ghp-import to accomplish this step.
 
-.. code-block:: bash
+.. code-block:: text
 
     (venv)$ make github
 
