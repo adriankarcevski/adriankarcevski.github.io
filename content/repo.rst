@@ -9,6 +9,7 @@ Setting up a Git Repository
 :authors: Adrian Karcevski
 :summary: How to do ___ in Bash.
 
+
 .. code-block:: bash
 
    $ git --version
@@ -58,3 +59,5 @@ Setting up a Git Repository
    # then; if working with others
    $ git pull origin master
    $ git push origin master
+
+   $ git revert <commit_id>
