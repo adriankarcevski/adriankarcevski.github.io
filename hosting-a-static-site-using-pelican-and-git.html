@@ -45,7 +45,7 @@
                 <a href="/category/projects.html" class="category">Projects</a><br />
 
                 <a class="author" href="/author/adrian-karcevski.html">Adrian Karcevski</a>
-                &mdash; <abbr title="2018-09-19T00:58:00-04:00">Wed 19 September 2018</abbr>
+                &mdash; <abbr title="2018-09-22T16:38:00-04:00">Sat 22 September 2018</abbr>
             </div>
         </div>
     </div>
@@ -62,10 +62,98 @@
     </div>
 
     <div class="entry-content">
-        <div class="highlight"><pre><span></span>$ git rm -rf --cached .
-$ git add .
-$ git commit -a -m <span class="s1">&#39;description&#39;</span> <span class="o">&amp;&amp;</span> git push --all
+        <p>In my search to find a fast and cheap method for creating this blog, I stumbled upon <a class="reference external" href="https://blog.getpelican.com/">Pelican</a>, a static site generator written in Python. I'll be showing you how to configure Pelican in conjunction with <a class="reference external" href="https://pages.github.com/">Github Pages</a> to host your webpage.</p>
+<p>You will need a Github account, a basic understanding of Git, and should be familiar with creating Python virtual environments.</p>
+<p>Pelican will generate .html files to be served by Github Pages. In order to do this we'll need one location for storing our &quot;source&quot; files and another location for our output files i.e. the actual webpage. We will be using two seperate branches within one repository to make this happen.</p>
+<p>First create the repository where our project will live.</p>
+<img alt="" src="/images/create-repo.png" />
+<p>Next clone the repository to create a new directory.</p>
+<div class="highlight"><pre><span></span>$ git clone https://github.com/&lt;your_name&gt;/&lt;your_name&gt;.github.io.git
 </pre></div>
+<p>Change to the new directory.</p>
+<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> &lt;your_name&gt;.github.io
+</pre></div>
+<p>As mentioned above we will need a place to store our &quot;source&quot; files i.e. configuration files, Makefile, virtual environment, and content folder. We will do this by creating a new branch.</p>
+<div class="highlight"><pre><span></span>$ git checkout -b <span class="nb">source</span>
+</pre></div>
+<p>Now create the virtual environment and activate it. If you're using Python3, Pelican requires version 3.3 or above.</p>
+<div class="highlight"><pre><span></span>$ virtualenv --python<span class="o">=</span>python3.6 venv
+$ <span class="nb">source</span> venv/bin/activate
+</pre></div>
+<p>Inside the virtual environment, install Pelican and the required dependencies.</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>venv<span class="o">)</span>$ pip install pelican markdown ghp-import
+</pre></div>
+<p>Afterwards, we can create our &quot;source&quot; files using pelican-quickstart</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>venv<span class="o">)</span>$ pelican-quickstart
+</pre></div>
+<p>You will be prompted a series of questions in order to setup the pelican.conf file.</p>
+<div class="highlight"><pre><span></span>&gt; Where do you want to create your new web site? [.] ./
+&gt; What will be the title of this web site? Adrian Karcevski
+&gt; Who will be the author of this web site? Adrian Karcevski
+&gt; What will be the default language of this web site? [pt] en
+&gt; Do you want to specify a URL prefix? e.g., http://example.com   (Y/n) n
+&gt; Do you want to enable article pagination? (Y/n) y
+&gt; How many articles per page do you want? [10] 10
+&gt; What is your time zone? [Europe/Paris] America/New_York
+&gt; Do you want to generate a Fabfile/Makefile to automate generation and publishing? (Y/n) Y
+&gt; Do you want an auto-reload &amp; simpleHTTP script to assist with theme and site development? (Y/n) n
+&gt; Do you want to upload your website using FTP? (y/N) n
+&gt; Do you want to upload your website using SSH? (y/N) n
+&gt; Do you want to upload your website using Dropbox? (y/N) n
+&gt; Do you want to upload your website using S3? (y/N) n
+&gt; Do you want to upload your website using Rackspace Cloud Files? (y/N) n
+&gt; Do you want to upload your website using GitHub Pages? (y/N) y
+&gt; Is this your personal page (username.github.io)? (y/N) y
+Done. Your new project is available at /home/&lt;your_name&gt;/&lt;your_name&gt;.github.io
+</pre></div>
+<p>Once you've completed the prompt, run ls command and make sure you see the following files.</p>
+<div class="highlight"><pre><span></span>$ ls
+content     Makefile  pelicanconf.py  __pycache__  venv
+fabfile.py  output    publishconf.py  README.md
+</pre></div>
+<p>Now, in the content folder, create a sample content file in Markdown (.md) format.</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>venv<span class="o">)</span>$ touch sample.md
+</pre></div>
+<p>In your text editor:</p>
+<div class="highlight"><pre><span></span>Title: Hosting a static site using Pelican and Git
+Date: 2018-09-22 16:38
+Category: Projects
+Tags: python, pelican, github, git
+Slug: post-1
+Authors: Adrian Karcevski
+
+GasdknjbnGajksnbkjlFSfjkn
+</pre></div>
+<p>Alternatively you can use the reStructuredText (.rst) format.</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>venv<span class="o">)</span>$ touch sample.rst
+</pre></div>
+<div class="highlight"><pre><span></span>Hosting a static site using Pelican and Git
+#####################################################
+:date: 2018-09-22 16:38
+:category: Projects
+:tags: python, pelican, github, git
+:authors: Adrian Karcevski
+
+GasdknjbnGajksnbkjlFSfjkn
+</pre></div>
+<p>To see what it looks like we need to make the .html files and serve them.</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>venv<span class="o">)</span>$ make html <span class="o">&amp;&amp;</span> serve html
+</pre></div>
+<p>Open your browser and go to localhost:8000 to see what it looks like. You should now see your webpage.</p>
+<p>In order to save space, I'm not going to go into adding images, rss feeds, etc.</p>
+<p>Finally lets make some last changes with git before we commit and push the code to our remote repository.</p>
+<p>By creating a .gitignore file git will ignore the output folder when pushing to the source branch. Then we will reload the staging area to ensure .gitignore works properly. If you setup a .gitignore when you made the repository, you can omit the reload.</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>venv<span class="o">)</span>$ <span class="nb">echo</span> output &gt; .gitignore
+<span class="o">(</span>venv<span class="o">)</span>$ git rm -rf --cached .
+<span class="o">(</span>venv<span class="o">)</span>$ git add .
+</pre></div>
+<p>Now we can commit the changes and push them to our remote repositories source branch.</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>venv<span class="o">)</span>$ git commit -a -m <span class="s1">&#39;intial commit&#39;</span> <span class="o">&amp;&amp;</span> git push origin <span class="nb">source</span>
+</pre></div>
+<p>Github Pages requires a ghpages branch which is where our files will be served from. The following command will accomplish this step.</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>venv<span class="o">)</span>$ make github
+</pre></div>
+<p>Congratulations, you've just created a webpage on Github Pages. You should see your content when you visit &lt;your_name&gt;.github.io</p>
 
     </div>
 

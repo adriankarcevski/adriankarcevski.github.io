@@ -1,5 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Adrian Karcevski</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2018-09-19T01:25:00-04:00</updated><entry><title>Async web scraping with Python</title><link href="/my-super-post.html" rel="alternate"></link><published>2018-09-19T01:24:00-04:00</published><updated>2018-09-19T01:24:00-04:00</updated><author><name>Adrian Karcevski</name></author><id>tag:None,2018-09-19:/my-super-post.html</id><summary type="html">&lt;p class="first last"&gt;How to do ___ in Python.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Adrian Karcevski</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2018-09-22T16:38:00-04:00</updated><entry><title>Hosting a static site using Pelican and Git</title><link href="/hosting-a-static-site-using-pelican-and-git.html" rel="alternate"></link><published>2018-09-22T16:38:00-04:00</published><updated>2018-09-22T16:38:00-04:00</updated><author><name>Adrian Karcevski</name></author><id>tag:None,2018-09-22:/hosting-a-static-site-using-pelican-and-git.html</id><summary type="html">&lt;p&gt;In my search to find a fast and cheap method for creating this blog, I stumbled upon &lt;a class="reference external" href="https://blog.getpelican.com/"&gt;Pelican&lt;/a&gt;, a static site generator written in Python. I'll be showing you how to configure Pelican in conjunction with &lt;a class="reference external" href="https://pages.github.com/"&gt;Github Pages&lt;/a&gt; to host your webpage.&lt;/p&gt;
+&lt;p&gt;You will need a Github account, a basic …&lt;/p&gt;</summary><content type="html">&lt;p&gt;In my search to find a fast and cheap method for creating this blog, I stumbled upon &lt;a class="reference external" href="https://blog.getpelican.com/"&gt;Pelican&lt;/a&gt;, a static site generator written in Python. I'll be showing you how to configure Pelican in conjunction with &lt;a class="reference external" href="https://pages.github.com/"&gt;Github Pages&lt;/a&gt; to host your webpage.&lt;/p&gt;
+&lt;p&gt;You will need a Github account, a basic understanding of Git, and should be familiar with creating Python virtual environments.&lt;/p&gt;
+&lt;p&gt;Pelican will generate .html files to be served by Github Pages. In order to do this we'll need one location for storing our &amp;quot;source&amp;quot; files and another location for our output files i.e. the actual webpage. We will be using two seperate branches within one repository to make this happen.&lt;/p&gt;
+&lt;p&gt;First create the repository where our project will live.&lt;/p&gt;
+&lt;img alt="" src="/images/create-repo.png" /&gt;
+&lt;p&gt;Next clone the repository to create a new directory.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git clone https://github.com/&amp;lt;your_name&amp;gt;/&amp;lt;your_name&amp;gt;.github.io.git
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Change to the new directory.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; &amp;lt;your_name&amp;gt;.github.io
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;As mentioned above we will need a place to store our &amp;quot;source&amp;quot; files i.e. configuration files, Makefile, virtual environment, and content folder. We will do this by creating a new branch.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git checkout -b &lt;span class="nb"&gt;source&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now create the virtual environment and activate it. If you're using Python3, Pelican requires version 3.3 or above.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ virtualenv --python&lt;span class="o"&gt;=&lt;/span&gt;python3.6 venv
+$ &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activate
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Inside the virtual environment, install Pelican and the required dependencies.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt;$ pip install pelican markdown ghp-import
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Afterwards, we can create our &amp;quot;source&amp;quot; files using pelican-quickstart&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt;$ pelican-quickstart
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You will be prompted a series of questions in order to setup the pelican.conf file.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt; Where do you want to create your new web site? [.] ./
+&amp;gt; What will be the title of this web site? Adrian Karcevski
+&amp;gt; Who will be the author of this web site? Adrian Karcevski
+&amp;gt; What will be the default language of this web site? [pt] en
+&amp;gt; Do you want to specify a URL prefix? e.g., http://example.com   (Y/n) n
+&amp;gt; Do you want to enable article pagination? (Y/n) y
+&amp;gt; How many articles per page do you want? [10] 10
+&amp;gt; What is your time zone? [Europe/Paris] America/New_York
+&amp;gt; Do you want to generate a Fabfile/Makefile to automate generation and publishing? (Y/n) Y
+&amp;gt; Do you want an auto-reload &amp;amp; simpleHTTP script to assist with theme and site development? (Y/n) n
+&amp;gt; Do you want to upload your website using FTP? (y/N) n
+&amp;gt; Do you want to upload your website using SSH? (y/N) n
+&amp;gt; Do you want to upload your website using Dropbox? (y/N) n
+&amp;gt; Do you want to upload your website using S3? (y/N) n
+&amp;gt; Do you want to upload your website using Rackspace Cloud Files? (y/N) n
+&amp;gt; Do you want to upload your website using GitHub Pages? (y/N) y
+&amp;gt; Is this your personal page (username.github.io)? (y/N) y
+Done. Your new project is available at /home/&amp;lt;your_name&amp;gt;/&amp;lt;your_name&amp;gt;.github.io
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Once you've completed the prompt, run ls command and make sure you see the following files.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ls
+content     Makefile  pelicanconf.py  __pycache__  venv
+fabfile.py  output    publishconf.py  README.md
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now, in the content folder, create a sample content file in Markdown (.md) format.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt;$ touch sample.md
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;In your text editor:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Title: Hosting a static site using Pelican and Git
+Date: 2018-09-22 16:38
+Category: Projects
+Tags: python, pelican, github, git
+Slug: post-1
+Authors: Adrian Karcevski
+
+GasdknjbnGajksnbkjlFSfjkn
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Alternatively you can use the reStructuredText (.rst) format.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt;$ touch sample.rst
+&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Hosting a static site using Pelican and Git
+#####################################################
+:date: 2018-09-22 16:38
+:category: Projects
+:tags: python, pelican, github, git
+:authors: Adrian Karcevski
+
+GasdknjbnGajksnbkjlFSfjkn
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;To see what it looks like we need to make the .html files and serve them.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt;$ make html &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; serve html
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Open your browser and go to localhost:8000 to see what it looks like. You should now see your webpage.&lt;/p&gt;
+&lt;p&gt;In order to save space, I'm not going to go into adding images, rss feeds, etc.&lt;/p&gt;
+&lt;p&gt;Finally lets make some last changes with git before we commit and push the code to our remote repository.&lt;/p&gt;
+&lt;p&gt;By creating a .gitignore file git will ignore the output folder when pushing to the source branch. Then we will reload the staging area to ensure .gitignore works properly. If you setup a .gitignore when you made the repository, you can omit the reload.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt;$ &lt;span class="nb"&gt;echo&lt;/span&gt; output &amp;gt; .gitignore
+&lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt;$ git rm -rf --cached .
+&lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt;$ git add .
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now we can commit the changes and push them to our remote repositories source branch.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt;$ git commit -a -m &lt;span class="s1"&gt;&amp;#39;intial commit&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; git push origin &lt;span class="nb"&gt;source&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Github Pages requires a ghpages branch which is where our files will be served from. The following command will accomplish this step.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt;$ make github
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Congratulations, you've just created a webpage on Github Pages. You should see your content when you visit &amp;lt;your_name&amp;gt;.github.io&lt;/p&gt;
+</content><category term="python"></category><category term="pelican"></category><category term="github"></category><category term="git"></category></entry><entry><title>Async web scraping with Python</title><link href="/my-super-post.html" rel="alternate"></link><published>2018-09-19T01:24:00-04:00</published><updated>2018-09-19T01:24:00-04:00</updated><author><name>Adrian Karcevski</name></author><id>tag:None,2018-09-19:/my-super-post.html</id><summary type="html">&lt;p class="first last"&gt;How to do ___ in Python.&lt;/p&gt;
 </summary><content type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Pelican is a static site generator.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 </content><category term="python"></category><category term="awesome"></category></entry><entry><title>Setting up a Git Repository</title><link href="/repo.html" rel="alternate"></link><published>2018-09-19T01:24:00-04:00</published><updated>2018-09-19T01:25:00-04:00</updated><author><name>Adrian Karcevski</name></author><id>tag:None,2018-09-19:/repo.html</id><summary type="html">&lt;p class="first last"&gt;How to do ___ in Bash.&lt;/p&gt;
@@ -50,16 +143,10 @@ $ git commit -m &lt;span class="s2"&gt;&amp;quot;Modified multiply function&amp;
 &lt;span class="c1"&gt;# then; if working with others&lt;/span&gt;
 $ git pull origin master
 $ git push origin master
+
+$ git revert &amp;lt;commit_id&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
 </content><category term="linux"></category></entry><entry><title>Creating watch dog scripts in Bash</title><link href="/secure.html" rel="alternate"></link><published>2018-09-19T01:24:00-04:00</published><updated>2018-09-19T01:24:00-04:00</updated><author><name>Adrian Karcevski</name></author><id>tag:None,2018-09-19:/secure.html</id><summary type="html">&lt;p class="first last"&gt;How to do ___ in Bash.&lt;/p&gt;
 </summary><content type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;hello world!&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-</content><category term="linux"></category></entry><entry><title>Hosting a static site using Pelican and Git</title><link href="/hosting-a-static-site-using-pelican-and-git.html" rel="alternate"></link><published>2018-09-19T00:58:00-04:00</published><updated>2018-09-19T00:58:00-04:00</updated><author><name>Adrian Karcevski</name></author><id>tag:None,2018-09-19:/hosting-a-static-site-using-pelican-and-git.html</id><summary type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git rm -rf --cached .
-$ git add .
-$ git commit -a -m &lt;span class="s1"&gt;&amp;#39;description&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; git push --all
-&lt;/pre&gt;&lt;/div&gt;
-</summary><content type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git rm -rf --cached .
-$ git add .
-$ git commit -a -m &lt;span class="s1"&gt;&amp;#39;description&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; git push --all
-&lt;/pre&gt;&lt;/div&gt;
-</content><category term="python"></category><category term="pelican"></category><category term="github"></category><category term="git"></category></entry></feed>
+</content><category term="linux"></category></entry></feed>

@@ -47,6 +47,8 @@ $ git commit -m &lt;span class="s2"&gt;&amp;quot;Modified multiply function&amp;
 &lt;span class="c1"&gt;# then; if working with others&lt;/span&gt;
 $ git pull origin master
 $ git push origin master
+
+$ git revert &amp;lt;commit_id&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
 </content><category term="linux"></category></entry><entry><title>Creating watch dog scripts in Bash</title><link href="/secure.html" rel="alternate"></link><published>2018-09-19T01:24:00-04:00</published><updated>2018-09-19T01:24:00-04:00</updated><author><name>Adrian Karcevski</name></author><id>tag:None,2018-09-19:/secure.html</id><summary type="html">&lt;p class="first last"&gt;How to do ___ in Bash.&lt;/p&gt;
 </summary><content type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;hello world!&amp;quot;&lt;/span&gt;
