@@ -1,11 +1,12 @@
-Hosting a static site using Pelican and Git
+Hosting a Pelican Website on Github
 #####################################################
 :date: 2018-09-22 16:38
 :category: Projects
 :tags: python, pelican, github, git
 :authors: Adrian Karcevski
 
-In my search to find a fast and cheap method for creating this blog, I stumbled upon `Pelican <https://blog.getpelican.com/>`_, a static site generator written in Python. I'll be showing you how to configure Pelican in conjunction with `Github Pages <https://pages.github.com/>`_ to host your webpage.
+
+In my search to find a fast and affordable method for creating this blog, I stumbled upon `Pelican <https://blog.getpelican.com/>`_, a static site generator written in Python. I'll be showing you how to configure Pelican in conjunction with `Github Pages <https://pages.github.com/>`_ to host your webpage.
 
 You will need a Github account, a basic understanding of Git, and should be familiar with creating Python virtual environments.
 

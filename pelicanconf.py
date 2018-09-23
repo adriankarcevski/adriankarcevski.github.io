@@ -48,7 +48,7 @@ MEDIUS_CATEGORIES = {
 
     'Python': {
         'description': 'things done with <3 in Python',
-        'logo': '/images/py3.jpg',
+        'logo': '/images/py.jpg',
         'thumbnail': '/images/snake.png',
     },
 
@@ -63,9 +63,9 @@ MEDIUS_CATEGORIES = {
 MEDIUS_AUTHORS = {
     'Adrian Karcevski': {
         'description':"""
-            I read a lot about technical topics related to IT.
+            A security analyst with a passion for Python.
         """,
-        'cover': '/images/profile.png',
+        'cover': '',
         'image': '/images/ninja.png',
         'links': (('github', 'https://github.com/adriankarcevski'),)
     }
